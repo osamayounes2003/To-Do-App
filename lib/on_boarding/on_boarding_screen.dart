@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:to_do_list/core/utilis/app_assets.dart';
-
-import 'home_page.dart';
-
+import 'package:to_do_list/core/utils/app_colors.dart';
+import 'package:to_do_list/core/widgets/custom_button.dart';
+import '../core/utils/app_assets.dart';
+import '../core/utils/theme.dart';
+import '../home_page.dart';
 
 class IntroScreen extends StatelessWidget {
   @override
@@ -12,24 +13,60 @@ class IntroScreen extends StatelessWidget {
     return IntroductionScreen(
       pages: [
         PageViewModel(
-          title: "Welcome to ToDo List",
-          body: "Manage your tasks efficiently and never miss a deadline.",
+          titleWidget: Text(
+            "Welcome to ToDo List ",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          bodyWidget: Text(
+            "Manage your tasks efficiently and never miss a deadline.",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
           image: Image.asset(AppAssets.onBoardingImg1),
         ),
         PageViewModel(
-          title: "Organize Your Tasks",
-          body: "Create, edit, and delete tasks with ease. Stay organized every day.",
-          image: Image.asset(AppAssets.onBoardingImg2, fit: BoxFit.fill,),
+          titleWidget: Text(
+            "Organize Your Tasks",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          bodyWidget: Text(
+            "Create, edit, and delete tasks with ease. Stay organized every day.",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          image: Image.asset(
+            AppAssets.onBoardingImg2,
+            fit: BoxFit.fill,
+          ),
         ),
         PageViewModel(
-          title: "Set Reminders",
-          body: "Get notifications for important tasks and deadlines.",
+          titleWidget: Text(
+            "Set Reminders",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          bodyWidget: Text(
+            "Get notifications for important tasks and deadlines.",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
           image: Image.asset(AppAssets.onBoardingImg3),
         ),
         PageViewModel(
-          title: "Get Started",
-          body: "Let's dive in and start managing your tasks!",
-          image: Image.asset(AppAssets.onBoardingImg4), // Add a fourth image for this page
+          titleWidget: Text(
+            "Get Started",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          bodyWidget: Text(
+            "Let's dive in and start managing your tasks!",
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          image: Image.asset(
+              AppAssets.onBoardingImg4), // Add a fourth image for this page
         ),
       ],
       onDone: () {
@@ -45,9 +82,18 @@ class IntroScreen extends StatelessWidget {
         ));
       },
       showSkipButton: true,
-      skip: Text("Skip"),
-      next: Icon(Icons.arrow_forward),
-      done: Text("Done"),
+      skip: CustomButton(
+          buttonText: 'Skip',
+          buttonColor: AppColors.blue,
+          textColor: AppColors.white),
+      next: CustomButton(
+          buttonText: 'Next',
+          buttonColor: AppColors.blue,
+          textColor: AppColors.white),
+      done: CustomButton(
+          buttonText: 'Done',
+          buttonColor: AppColors.green,
+          textColor: AppColors.white)
     );
   }
 }

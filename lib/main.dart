@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:introduction_screen/introduction_screen.dart';
-import 'package:to_do_list/home_page.dart';
-
-import 'on_boading_one.dart';
+import 'package:to_do_list/core/utils/theme.dart';
+import 'on_boarding/on_boarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,11 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: themeApp(),
       home: IntroScreen()
     );
   }
