@@ -6,18 +6,18 @@ class CustomButton extends StatelessWidget {
 final String buttonText;
 final Color buttonColor;
 final Color textColor;
-
+final GestureTapCallback? onTapFunction ;
 CustomButton({
  //
   required this.buttonText,
   required this.buttonColor,
-  required this.textColor,
+  required this.textColor, this.onTapFunction,
 });
 
 @override
 Widget build(BuildContext context) {
   return InkWell(
-   // onTap: onPressed,
+   onTap: onTapFunction,
     borderRadius: BorderRadius.circular(8),
     child: Container(
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
