@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:to_do_list/core/data_base/cache_helper.dart';
+import 'package:to_do_list/core/services/service.dart';
 import 'package:to_do_list/core/utils/app_colors.dart';
 import 'package:to_do_list/core/widgets/custom_button.dart';
 import '../core/utils/app_assets.dart';
@@ -17,18 +18,12 @@ class IntroScreen extends StatelessWidget {
             titleWidget: Text(
               "Welcome to ToDo List ",
               textAlign: TextAlign.center,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .displayLarge,
+              style: Theme.of(context).textTheme.displayLarge,
             ),
             bodyWidget: Text(
               "Manage your tasks efficiently and never miss a deadline.",
               textAlign: TextAlign.center,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             image: Image.asset(AppAssets.onBoardingImg1),
           ),
@@ -36,18 +31,12 @@ class IntroScreen extends StatelessWidget {
             titleWidget: Text(
               "Organize Your Tasks",
               textAlign: TextAlign.center,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .displayLarge,
+              style: Theme.of(context).textTheme.displayLarge,
             ),
             bodyWidget: Text(
               "Create, edit, and delete tasks with ease. Stay organized every day.",
               textAlign: TextAlign.center,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             image: Image.asset(
               AppAssets.onBoardingImg2,
@@ -58,18 +47,12 @@ class IntroScreen extends StatelessWidget {
             titleWidget: Text(
               "Set Reminders",
               textAlign: TextAlign.center,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .displayLarge,
+              style: Theme.of(context).textTheme.displayLarge,
             ),
             bodyWidget: Text(
               "Get notifications for important tasks and deadlines.",
               textAlign: TextAlign.center,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             image: Image.asset(AppAssets.onBoardingImg3),
           ),
@@ -77,18 +60,12 @@ class IntroScreen extends StatelessWidget {
             titleWidget: Text(
               "Get Started",
               textAlign: TextAlign.center,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .displayLarge,
+              style: Theme.of(context).textTheme.displayLarge,
             ),
             bodyWidget: Text(
               "Let's dive in and start managing your tasks!",
               textAlign: TextAlign.center,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             image: Image.asset(
                 AppAssets.onBoardingImg4), // Add a fourth image for this page
@@ -108,16 +85,11 @@ class IntroScreen extends StatelessWidget {
         },
         showSkipButton: true,
         skip: CustomButton(
-            onTapFunction: () {
-
-
-              Navigator
-                  .of(context)
-                  .pushReplacement(
-                  MaterialPageRoute(
-                      builder: (context) => HomePage())
-                  );
-              },
+            onTapFunction: () async{
+              await singleTone<CacheHelper>().saveData(key: 'isVisited', value: true);
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => HomePage()));
+            },
             buttonText: 'Skip',
             buttonColor: AppColors.blue,
             textColor: AppColors.white),
@@ -128,7 +100,6 @@ class IntroScreen extends StatelessWidget {
         done: CustomButton(
             buttonText: 'Done',
             buttonColor: AppColors.green,
-            textColor: AppColors.white)
-    );
+            textColor: AppColors.white));
   }
 }
